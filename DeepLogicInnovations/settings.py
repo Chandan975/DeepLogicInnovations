@@ -70,23 +70,10 @@ TEMPLATES = [
     },
 ]
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / "static"
-
-
-MEDIA_URL= "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
-
-if DEBUG:
-    STATIC_ROOT = BASE_DIR / "static"
-    # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
-else:
-
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-WSGI_APPLICATION = 'DeepLogicInnovations.wsgi.application'
-
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    "/var/www/static/",
+]
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
