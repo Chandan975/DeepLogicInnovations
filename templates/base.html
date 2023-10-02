@@ -75,7 +75,7 @@
                     <div class="collapse navbar-collapse bg-transparent" id="navbarCollapse">
                         <div class="navbar-nav ms-auto mx-xl-auto p-0">
                             <a href="{% url 'index' %}" class="nav-item nav-link active text-secondary">Home</a>
-                            <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+                            <a href="{% url 'about' %}" class="nav-item nav -link">About</a>
                             <a href="{% url 'service' %}" class="nav-item nav-link">Services</a>
                             <a href="{% url 'project' %}" class="nav-item nav-link">Projects</a>
                             <div class="nav-item dropdown">
@@ -84,7 +84,7 @@
                                     <a href="{% url 'blog' %}" class="dropdown-item">Our Blog</a>
                                     <a href="{% url 'team' %}" class="dropdown-item">Our Team</a>
                                     <a href="{% url 'testimonial' %}" class="dropdown-item">Testimonial</a>
-                                    <a href="404.html" class="dropdown-item">404 Page</a>
+                                    <!-- <a href="404.html" class="dropdown-item">404 Page</a> -->
                                 </div>
                             </div>
                             <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
@@ -119,6 +119,10 @@
     {% block service %}
     {% endblock %}
     {% block project %}
+    {% endblock %}
+    {% block contact %}
+    {% endblock %}
+    {% block blog %}
     {% endblock %}
 </main>
   
@@ -201,7 +205,26 @@
 
       <!-- Include your custom JavaScript -->
       <script src="{% static 'js/main.js' %}"></script>
+<script>
+    function setActiveClass() {
+  var currentURL = window.location.pathname; // Get the current URL path
+  var links = document.querySelectorAll('.navbar a'); // Select all navigation links
 
+  // Loop through each link and compare its href attribute to the current URL
+  links.forEach(function(link) {
+    var linkURL = link.getAttribute('href');
+    if (linkURL === currentURL) {
+      link.classList.add('active'); // Add the "active" class to the matching link
+    } else {
+      link.classList.remove('active'); // Remove the "active" class from other links
+    }
+  });
+}
+
+// Call the setActiveClass function when the page loads
+window.addEventListener('load', setActiveClass);
+
+</script>
     </body>
 
 </html>
